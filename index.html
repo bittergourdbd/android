@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Basic WebViewer</title>
+</head>
+
+<!-- Import WebViewer as a script tag -->
+<script src='https://cdn.jsdelivr.net/npm/@pdftron/webviewer@8.2.0/webviewer.min.js'></script>
+
+<body>
+<div id='viewer' style='width: 1024px; height: 1024px; margin: 0 auto;'></div>
+<script>
+
+var _webViewerInstance = null
+const wvElement = document.getElementById('viewer');
+WebViewer(
+  {
+     path: 'https://dokumfe7mps0i.cloudfront.net/static/webviewer',
+     licenseKey: 'C5E5B49F6AC0D629CC44AFD4357F2BF10B292D947A6DBD126BC2C7DD10C6549231F5C7',
+     config: 'https://dokumfe7mps0i.cloudfront.net/static/webviewer/ui/doc-viewer-config.js',
+     initialDoc: 'https://d25zu39ynyitwy.cloudfront.net/media/form-documents/2021/10/1635234407.2368474_oopdfformexample.pdf',
+     preloadWorker: 'pdf',
+     extension: 'pdf',
+     fullAPI: true
+  }, wvElement).then(instance => {
+     alert("instance")
+     _webViewerInstance = instance
+});
+if (typeof(_webViewerInstance) !== "undefined" && _webViewerInstance !== null){
+    alert("not null")
+} else  {
+    alert("null")
+}
+
+window.addEventListener ('message', function(event) {
+                 alert(JSON.stringify(event.data));
+                 })
+
+</script>
+</body>
+</html>
