@@ -10,8 +10,9 @@
 <body>
 <div id='viewer' style='width: 1024px; height: 1024px; margin: 0 auto;'></div>
 <script>
-
-var _webViewerInstance = null
+window.addEventListener ('message', function(event) {
+                 alert(JSON.stringify(event.data));
+                 })
 const wvElement = document.getElementById('viewer');
 WebViewer(
   {
@@ -22,19 +23,7 @@ WebViewer(
      preloadWorker: 'pdf',
      extension: 'pdf',
      fullAPI: true
-  }, wvElement).then(instance => {
-     alert("instance")
-     _webViewerInstance = instance
-});
-if (typeof(_webViewerInstance) !== "undefined" && _webViewerInstance !== null){
-    alert("not null")
-} else  {
-    alert("null")
-}
-
-window.addEventListener ('message', function(event) {
-                 alert(JSON.stringify(event.data));
-                 })
+  }, wvElement);
 
 </script>
 </body>
